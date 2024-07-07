@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
 
 const UseFetchStore = () => {
     const [store, setStore] = useState(null);
@@ -9,8 +10,8 @@ const UseFetchStore = () => {
     }, []);
 
     const fetchStore = async () => {
-        const res = await fetch("https://fakestoreapi.com/products/");
-        const data = await res.json();
+        const res = await axios.get("https://fakestoreapi.com/products/");
+        const data = res.data;
         setStore(data);
     };
 
